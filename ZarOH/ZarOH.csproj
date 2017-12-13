@@ -200,8 +200,10 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RoomsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -221,17 +223,32 @@
     <Compile Include="Migrations\201712131722278_InitialMigration3.Designer.cs">
       <DependentUpon>201712131722278_InitialMigration3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712131743096_AddingMembershipTypes.cs" />
+    <Compile Include="Migrations\201712131743096_AddingMembershipTypes.Designer.cs">
+      <DependentUpon>201712131743096_AddingMembershipTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712131749193_AddingWasHereBefore.cs" />
+    <Compile Include="Migrations\201712131749193_AddingWasHereBefore.Designer.cs">
+      <DependentUpon>201712131749193_AddingWasHereBefore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712132035420_PopulateMembershipType.cs" />
+    <Compile Include="Migrations\201712132035420_PopulateMembershipType.Designer.cs">
+      <DependentUpon>201712132035420_PopulateMembershipType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Room.cs" />
     <Compile Include="Models\RoomType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\CustomerFormViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-lumen.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -287,9 +304,13 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_Navbar.cshtml" />
+    <Content Include="Views\Customers\CustomerForm.cshtml" />
+    <Content Include="Views\Customers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Rooms\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -319,6 +340,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712131722278_InitialMigration3.resx">
       <DependentUpon>201712131722278_InitialMigration3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712131743096_AddingMembershipTypes.resx">
+      <DependentUpon>201712131743096_AddingMembershipTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712131749193_AddingWasHereBefore.resx">
+      <DependentUpon>201712131749193_AddingWasHereBefore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712132035420_PopulateMembershipType.resx">
+      <DependentUpon>201712132035420_PopulateMembershipType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
