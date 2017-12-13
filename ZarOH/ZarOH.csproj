@@ -235,6 +235,10 @@
     <Compile Include="Migrations\201712132035420_PopulateMembershipType.Designer.cs">
       <DependentUpon>201712132035420_PopulateMembershipType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712132043579_PopulateRoomTypes.cs" />
+    <Compile Include="Migrations\201712132043579_PopulateRoomTypes.Designer.cs">
+      <DependentUpon>201712132043579_PopulateRoomTypes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -349,6 +353,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712132035420_PopulateMembershipType.resx">
       <DependentUpon>201712132035420_PopulateMembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712132043579_PopulateRoomTypes.resx">
+      <DependentUpon>201712132043579_PopulateRoomTypes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
