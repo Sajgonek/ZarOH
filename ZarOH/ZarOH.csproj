@@ -213,6 +213,14 @@
     <Compile Include="Migrations\201712131618154_InitialMigration1.Designer.cs">
       <DependentUpon>201712131618154_InitialMigration1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712131648410_InitialMigration2.cs" />
+    <Compile Include="Migrations\201712131648410_InitialMigration2.Designer.cs">
+      <DependentUpon>201712131648410_InitialMigration2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712131722278_InitialMigration3.cs" />
+    <Compile Include="Migrations\201712131722278_InitialMigration3.Designer.cs">
+      <DependentUpon>201712131722278_InitialMigration3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -305,6 +313,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712131618154_InitialMigration1.resx">
       <DependentUpon>201712131618154_InitialMigration1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712131648410_InitialMigration2.resx">
+      <DependentUpon>201712131648410_InitialMigration2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712131722278_InitialMigration3.resx">
+      <DependentUpon>201712131722278_InitialMigration3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
