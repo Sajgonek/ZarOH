@@ -239,6 +239,10 @@
     <Compile Include="Migrations\201712132043579_PopulateRoomTypes.Designer.cs">
       <DependentUpon>201712132043579_PopulateRoomTypes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712132141481_AddingAnnotations.cs" />
+    <Compile Include="Migrations\201712132141481_AddingAnnotations.Designer.cs">
+      <DependentUpon>201712132141481_AddingAnnotations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -250,6 +254,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CustomerFormViewModel.cs" />
+    <Compile Include="ViewModels\RoomFormViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-lumen.css" />
@@ -312,10 +317,10 @@
     <Content Include="Views\Customers\CustomerForm.cshtml" />
     <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\Customers\Details.cshtml" />
+    <Content Include="Views\Rooms\RoomForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Rooms\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -357,6 +362,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712132043579_PopulateRoomTypes.resx">
       <DependentUpon>201712132043579_PopulateRoomTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712132141481_AddingAnnotations.resx">
+      <DependentUpon>201712132141481_AddingAnnotations.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

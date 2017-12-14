@@ -1,0 +1,26 @@
+﻿@model ZarOH.ViewModels.RoomFormViewModel
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Room</h2>
+
+<p>
+    @Html.ActionLink("Add Room", "New", "Rooms", null, new { @class = "btn btn-primary" })
+</p>
+
+@using (Html.BeginForm("Save", "Rooms"))
+{
+
+    @*<div class="form-group">
+        @Html.LabelFor(m => m.Room.Name)
+        @Html.TextBoxFor(m => m.Room.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Room.Name)
+    </div>*@
+
+
+    @Html.HiddenFor(m => m.Room.Id)
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Save</button>
+

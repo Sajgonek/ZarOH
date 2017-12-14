@@ -10,12 +10,14 @@ namespace ZarOH.Models
     {
         [Required]
         public int Id { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Please enter customer's Name.")]
         public string Name { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Please enter Email Address.")]
+        [Display(Name = "Email Address")]
         public string EmailAddress { get; set; }
         public MembershipType MembershipType { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Please select customer's Membership Type.")]
+        [Display(Name = "Membership Type")]
         public int MembershipTypeId { get; set; }
         [Required]
         public bool WasACustomerBefore { get; set; }
