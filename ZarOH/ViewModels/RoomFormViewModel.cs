@@ -8,7 +8,7 @@ namespace ZarOH.ViewModels
 {
     public class RoomFormViewModel
     {
-        IEnumerable<RoomType> RoomTypes { get; set; }
+        public IEnumerable<RoomType> RoomTypes { get; set; }
         public Room Room { get; set; }
     }
 }

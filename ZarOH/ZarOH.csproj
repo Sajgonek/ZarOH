@@ -318,6 +318,7 @@
     <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\Customers\Details.cshtml" />
     <Content Include="Views\Rooms\RoomForm.cshtml" />
+    <Content Include="Views\Rooms\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

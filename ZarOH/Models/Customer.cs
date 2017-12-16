@@ -8,7 +8,6 @@ namespace ZarOH.Models
 {
     public class Customer
     {
-        [Required]
         public int Id { get; set; }
         [Required(ErrorMessage = "Please enter customer's Name.")]
         public string Name { get; set; }
