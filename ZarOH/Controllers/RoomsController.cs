@@ -31,6 +31,7 @@ namespace ZarOH.Controllers
             var roomtypes = _context.RoomTypes.ToList();
             var viewModel = new RoomFormViewModel
             {
+                Room = new Room(),
                 RoomTypes = roomtypes
             };
             return View("RoomForm", viewModel);
@@ -55,15 +56,15 @@ namespace ZarOH.Controllers
         [HttpPost]
         public ActionResult Save(Room room)
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    var viewModel = new RoomFormViewModel
-            //    {
-            //        Room = room,
-            //        RoomTypes = _context.RoomTypes.ToList()
-            //    };
-            //    return View("RoomForm", viewModel);
-            //}
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new RoomFormViewModel
+                {
+                    Room = room,
+                    RoomTypes = _context.RoomTypes.ToList()
+                };
+                return View("RoomForm", viewModel);
+            }
 
             if (room.Id == 0)
                 _context.Rooms.Add(room);
