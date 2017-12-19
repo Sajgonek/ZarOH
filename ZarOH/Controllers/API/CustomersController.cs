@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using ZarOH.Dtos;
 using ZarOH.Models;
 
 namespace ZarOH.Controllers.API
@@ -17,51 +18,56 @@ namespace ZarOH.Controllers.API
             _context = new ApplicationDbContext();
         }
         // GET api/customers
-        public IEnumerable<Customer> GetCustomers()
+        public IHttpActionResult GetCustomers()
         {
-            return _context.Customers.ToList();
+            var oldCustomers = _context.Customers.ToList();
+            var customers = AutoMapper.Mapper.Map<List<Customer>, List<CustomerDto>>(oldCustomers);
+            return Ok(customers);
         }
 
         //GET api/customer
 
-        public Customer GetCustomer(int id)
+        public IHttpActionResult GetCustomer(int id)
         {
             var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
 
             if (customer == null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+                return NotFound();
 
-            return customer;
+            return Ok(AutoMapper.Mapper.Map<Customer, CustomerDto>(customer));
         }
 
         //POST api/customers
         [HttpPost]
-        public Customer CreateCustomer(Customer customer)
+        public IHttpActionResult CreateCustomer(CustomerDto customerDto)
         {
             if (!ModelState.IsValid)
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+                return BadRequest();
+
+            var customer = AutoMapper.Mapper.Map<Customer>(customerDto);
 
             _context.Customers.Add(customer);
             _context.SaveChanges();
 
-            return customer;
+            customerDto.Id = customer.Id;
+
+            return Created(new Uri(Request.RequestUri + "/" + customer.Id), customerDto);
         }
 
         //PUT api/customers
         [HttpPut]
-        public void UpdateCustomer(int id, Customer customer)
+        public IHttpActionResult UpdateCustomer(int id, CustomerDto customerDto)
         {
-            var customerInDb = _context.Customers.Single(c => c.Id == customer.Id);
+            var customerInDb = _context.Customers.Single(c => c.Id == customerDto.Id);
 
             if (customerInDb == null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+                return NotFound();
 
-            customerInDb.Name = customer.Name;
-            customerInDb.MembershipTypeId = customer.MembershipTypeId;
-            customerInDb.WasACustomerBefore = customer.WasACustomerBefore;
-            customerInDb.EmailAddress = customer.EmailAddress;
+            AutoMapper.Mapper.Map(customerDto, customerInDb);
 
             _context.SaveChanges();
+
+            return Ok(AutoMapper.Mapper.Map<Customer, CustomerDto>(customerInDb));
         }
 
         //DELETE api/customers/1
