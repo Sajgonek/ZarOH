@@ -22,8 +22,7 @@ namespace ZarOH.Controllers
         }
         public ActionResult Index()
         {
-            var rooms = _context.Rooms.Include(c => c.RoomType).ToList();
-            return View(rooms);
+            return View();
         }
 
         public ActionResult AddRoom()

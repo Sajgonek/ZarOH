@@ -12,12 +12,16 @@ namespace ZarOH.App_Start
     {
         public static void RegisterMaps()
         {
-            AutoMapper.Mapper.Initialize(c =>
+            Mapper.Initialize(c =>
             {
                 c.CreateMap<Customer, CustomerDto>();
                 c.CreateMap<CustomerDto, Customer>();
                 c.CreateMap<Room, RoomDto>();
                 c.CreateMap<RoomDto, Room>();
+                c.CreateMap<MembershipType, MembershipTypeDto>();
+                c.CreateMap<MembershipTypeDto, MembershipType>();
+                c.CreateMap<RoomType, RoomTypeDto>();
+                c.CreateMap<RoomTypeDto, RoomType>();
             });
         }
     }

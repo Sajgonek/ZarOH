@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Data.Entity;
 using System.Net.Http;
 using System.Web.Http;
 using ZarOH.Dtos;
@@ -20,7 +21,7 @@ namespace ZarOH.Controllers.API
         // GET api/customers
         public IHttpActionResult GetCustomers()
         {
-            var oldCustomers = _context.Customers.ToList();
+            var oldCustomers = _context.Customers.Include(c => c.MembershipType).ToList();
             var customers = AutoMapper.Mapper.Map<List<Customer>, List<CustomerDto>>(oldCustomers);
             return Ok(customers);
         }

@@ -9,6 +9,7 @@ namespace ZarOH.Dtos
     public class RoomDto
     {
         public int Id { get; set; }
+        public RoomTypeDto RoomTypeDto { get; set; }
         [Required]
         public int RoomTypeId { get; set; }
     }

@@ -15,6 +15,7 @@ namespace ZarOH.Dtos
         [Required(ErrorMessage = "Please enter Email Address.")]
         [EmailAddress]
         public string EmailAddress { get; set; }
+        public MembershipTypeDto MembershipType { get; set; }
         [Required(ErrorMessage = "Please select customer's Membership Type.")]
         public int MembershipTypeId { get; set; }
         [Required]
