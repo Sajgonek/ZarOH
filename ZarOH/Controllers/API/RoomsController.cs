@@ -38,6 +38,7 @@ namespace ZarOH.Controllers.API
         }
 
         //POST api/customers
+        [Authorize(Roles = RoleName.CanManageRooms)]
         [HttpPost]
         public IHttpActionResult CreateRoom(RoomDto roomDto)
         {
@@ -54,7 +55,9 @@ namespace ZarOH.Controllers.API
             return Created(new Uri(Request.RequestUri + "/" + room.Id), roomDto);
         }
 
+
         //PUT api/customers
+        [Authorize(Roles = RoleName.CanManageRooms)]
         [HttpPut]
         public IHttpActionResult UpdateRoom(int id, RoomDto roomDto)
         {
@@ -71,6 +74,7 @@ namespace ZarOH.Controllers.API
         }
 
         //DELETE api/customers/1
+        [Authorize(Roles = RoleName.CanManageRooms)]
         [HttpDelete]
         public IHttpActionResult DeleteRoom(int id)
         {

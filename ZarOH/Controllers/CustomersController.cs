@@ -10,7 +10,7 @@ using System.Data.Entity.Validation;
 
 namespace ZarOH.Controllers
 {
-    [Authorize]
+    
     public class CustomersController : Controller
     {
         private ApplicationDbContext _context;

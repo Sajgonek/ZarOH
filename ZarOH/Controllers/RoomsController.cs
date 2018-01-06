@@ -9,6 +9,7 @@ using ZarOH.ViewModels;
 
 namespace ZarOH.Controllers
 {
+
     public class RoomsController : Controller
     {
         ApplicationDbContext _context;
@@ -22,9 +23,15 @@ namespace ZarOH.Controllers
         }
         public ActionResult Index()
         {
-            return View();
-        }
+            if (User.IsInRole(RoleName.CanManageRooms))
+                return View("List");
 
+
+            return View("ReadOnlyList");
+
+
+        }
+        [Authorize(Roles = RoleName.CanManageRooms)]
         public ActionResult AddRoom()
         {
             var roomtypes = _context.RoomTypes.ToList();
@@ -36,6 +43,7 @@ namespace ZarOH.Controllers
             return View("RoomForm", viewModel);
         }
 
+        [Authorize(Roles = RoleName.CanManageRooms)]
         public ActionResult Edit(int id)
         {
             var room = _context.Rooms.SingleOrDefault(c => c.Id == id);
@@ -52,6 +60,7 @@ namespace ZarOH.Controllers
             return View("RoomForm", viewModel);
         }
 
+        [Authorize(Roles = RoleName.CanManageRooms)]
         [HttpPost]
         public ActionResult Save(Room room)
         {
