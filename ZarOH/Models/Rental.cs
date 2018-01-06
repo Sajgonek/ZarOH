@@ -6,13 +6,16 @@ using System.Web;
 
 namespace ZarOH.Models
 {
-    public class Room
+    public class Rental
     {
         public int Id { get; set; }
-        public RoomType RoomType { get; set; }
         [Required]
-        [Display(Name ="Type of the Room")]
-        public int RoomTypeId { get; set; }
-        public bool IsOccupied { get; set; }
+        public Customer Customer { get; set;}
+        [Required]
+        public Room Room { get; set; }
+
+        public DateTime DateRented { get; set; }
+
+        public DateTime DateLeft { get; set; }
     }
 }

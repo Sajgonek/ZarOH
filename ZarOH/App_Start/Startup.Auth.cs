@@ -54,9 +54,9 @@ namespace ZarOH
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "1543188785760088",
+               appSecret: "df9b1b18df142de57b1f02a1fb84463f");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{
