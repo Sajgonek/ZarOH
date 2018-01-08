@@ -16,6 +16,6 @@ namespace ZarOH.Models
 
         public DateTime DateRented { get; set; }
 
-        public DateTime DateLeft { get; set; }
+        public DateTime ? DateLeft { get; set; }
     }
 }
