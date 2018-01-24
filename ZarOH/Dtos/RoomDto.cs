@@ -9,8 +9,9 @@ namespace ZarOH.Dtos
     public class RoomDto
     {
         public int Id { get; set; }
-        public RoomTypeDto RoomTypeDto { get; set; }
+        public RoomTypeDto RoomType { get; set; }
         [Required]
         public int RoomTypeId { get; set; }
+        public bool IsOccupied { get; set; }
     }
 }

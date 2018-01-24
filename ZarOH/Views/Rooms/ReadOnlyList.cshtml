@@ -11,7 +11,8 @@
 <table id="rooms" class="table table-bordered table-hover">
     <thead>
         <tr>
-            <th>Room</th>
+            <th>Room Id</th>
+            <th>Room Type</th>
         </tr>
     </thead>
     <tbody>
@@ -31,9 +32,9 @@
                 columns: [
                     {
                         data: "id"
-                        //render: function (data, type, room) {
-                        //    return "<a href='/rooms/edit/" + room.id + "'>" + room.roomTypeId + "</a>"
-                        //}
+                    },
+                    {
+                        data: "roomType.name"
                     }
 
                 ]

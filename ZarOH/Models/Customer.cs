@@ -15,6 +15,9 @@ namespace ZarOH.Models
         [Display(Name = "Email Address")]
         [EmailAddress]
         public string EmailAddress { get; set; }
+        [Required(ErrorMessage = "Please enter Telephone Number.")]
+        [Display(Name = "Telephone Number")]
+        public string TelNr { get; set; }
         public MembershipType MembershipType { get; set; }
         [Required(ErrorMessage = "Please select customer's Membership Type.")]
         [Display(Name = "Membership Type")]

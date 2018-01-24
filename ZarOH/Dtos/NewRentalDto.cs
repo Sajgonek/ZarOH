@@ -8,6 +8,6 @@ namespace ZarOH.Dtos
     public class NewRentalDto
     {
         public int CustomerId { get; set; }
-        public List<int> RoomIds { get; set; }
+        public int RoomId { get; set; }
     }
 }

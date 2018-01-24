@@ -22,6 +22,9 @@ namespace ZarOH.App_Start
                 c.CreateMap<MembershipTypeDto, MembershipType>();
                 c.CreateMap<RoomType, RoomTypeDto>();
                 c.CreateMap<RoomTypeDto, RoomType>();
+                c.CreateMap<Rental, RentalDto>();
+                c.CreateMap<RentalDto, Rental>();
+
             });
         }
     }

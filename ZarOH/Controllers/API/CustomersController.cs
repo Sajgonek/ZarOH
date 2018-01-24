@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Data.Entity;
-using System.Net.Http;
 using System.Web.Http;
 using ZarOH.Dtos;
 using ZarOH.Models;
@@ -19,11 +18,20 @@ namespace ZarOH.Controllers.API
             _context = new ApplicationDbContext();
         }
         // GET api/customers
-        public IHttpActionResult GetCustomers()
+        public IHttpActionResult GetCustomers(string query = null)
         {
-            var oldCustomers = _context.Customers.Include(c => c.MembershipType).ToList();
-            var customers = AutoMapper.Mapper.Map<List<Customer>, List<CustomerDto>>(oldCustomers);
-            return Ok(customers);
+            var customersQuery = _context.Customers
+                .Include(c => c.MembershipType);
+
+            if (!String.IsNullOrWhiteSpace(query))
+                customersQuery = customersQuery.Where(c => c.Name.Contains(query));
+
+            var customerDtos = customersQuery
+                .ToList()
+                .Select(AutoMapper.Mapper.Map<Customer, CustomerDto>);
+
+            return Ok(customerDtos);
+
         }
 
         //GET api/customer

@@ -13,7 +13,8 @@
 <table id="rooms" class="table table-bordered table-hover">
     <thead>
         <tr>
-            <th>Room</th>
+            <th>Room Id</th>
+            <th>Room Type</th>
             <th>Delete</th>
         </tr>
     </thead>
@@ -26,22 +27,25 @@
     <script>
         $(document).ready(function () {
 
-            var table = $("#rooms").DataTable({
-                ajax: {
-                    url: "/api/rooms",
-                    dataSrc: ""
-                },
-                columns: [
-                    {
-                        data: "name",
-                        render: function (data, type, room) {
-                            return "<a href='/rooms/edit/" + room.id + "'>" + room.roomTypeId + "</a>"
-                        }
+                var table = $("#rooms").DataTable({
+                    ajax: {
+                        url: "/api/rooms",
+                        dataSrc: ""
                     },
+                    columns: [
+                        {
+                            data: "name",
+                            render: function(data, type, room) {
+                                return "<a href='/rooms/edit/" + room.id + "'>" + room.id + "</a>"
+                            }
+                        },
+                        {
+                            data: "roomType.name"
+                         },
                     {
                         data: "id",
                         render: function (data) {
-                            return "<button class='btn-link js-delete' data-room-id=" + data + ">delete</button>";
+                            return "<button class='btn-link js-delete' data-room-id=" + data + ">Delete</button>";
                         }
                     }
                 ]

@@ -28,6 +28,12 @@
         @Html.ValidationMessageFor(m => m.Customer.EmailAddress)
     </div>
 
+    <div class="form-group">
+        @Html.LabelFor(m => m.Customer.TelNr)
+        @Html.TextBoxFor(m => m.Customer.TelNr, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Customer.TelNr)
+    </div>
+
 
     <div class="checkbox">
         <label>
@@ -39,7 +45,7 @@
     <button type="submit" class="btn btn-primary">Save</button>
 }
 
-@section scripts
+@*@section scripts
 {
     @Scripts.Render("~/bundles/jqueryval")
-}
+}*@

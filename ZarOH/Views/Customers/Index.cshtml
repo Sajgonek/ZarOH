@@ -15,7 +15,8 @@
         <thead>
             <tr>
                 <th>Customer</th>
-                <th>Dicount Rate</th>
+                <th>Membership Type</th>
+                <th>Telephone Number</th>
                 <th>Delete</th>
             </tr>
         </thead>
@@ -45,6 +46,9 @@
                         data: "membershipType.name"
                     },
                     {
+                        data: "telNr"
+                    },
+                    {
                         data: "id",
                         render: function (data) {
                             return "<button class='btn-link js-delete' data-customer-id=" + data + ">Delete</button>";
@@ -64,7 +68,7 @@
                             url: "/api/customers/" + button.attr("data-customer-id"),
                             method: "DELETE",
                             success: function () {
-                                table.row(button.parents("tr")).remove().draw()                                
+                                table.row(button.parents("tr")).remove().draw();
                             }
                         });
                     }

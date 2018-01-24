@@ -1,0 +1,116 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "New Rental";
+}
+
+
+<h2>New Rental</h2>
+<form id="newRental">
+    <div class="form-group">  
+        <label>Customer</label>
+        <div class="tt-container">            
+            <input id="customer" type="text" class="form-control" />
+        </div>    
+    </div>
+    
+    <div class="form-group">  
+        <label>Room Type</label>
+        <div class="tt-container">
+            <input id="room" type="text" class="form-control" />
+        </div>       
+    </div>
+    
+    
+   
+
+    <ul id="rooms" class="list-group"></ul>
+
+    <button class="btn btn-primary">Submit</button>                          
+
+</form>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+
+            var vm = {
+            };
+
+            var customers = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                remote: {
+                    url: '/api/customers?query=%QUERY',
+                    wildcard: '%QUERY'
+                }
+            });
+
+            $('#customer').typeahead({
+                    highlight: true
+                },
+                {
+                    name: 'customers',
+                    display: 'name',
+                    source: customers
+                }).on("typeahead:select",
+                function(e, customer) {
+                    vm.customerId = customer.id;
+                });
+
+            var rooms = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('id'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                remote: {
+                    url: '/api/rooms?query=%QUERY',
+                    wildcard: '%QUERY'
+                }
+            });
+
+            $('#room').typeahead({
+                    highlight: true
+                },
+                {
+                    name: 'rooms',
+                    display: function(d) {
+                        return d.roomType.name;
+                    },
+                    source: rooms
+                }).on("typeahead:select",
+                function (e, room) {
+                    vm.roomId = room.id;
+
+                    $("#rooms").append("<li class='list-group-item'>" +
+                        "Room number:" +
+                        room.id +
+                        " Room type: " +
+                        room.roomType.name +
+                        "</li>");
+                    $("#room").typeahead("val", "Added");
+
+                });
+
+
+            $("#newRental").submit(function (e) {
+                e.preventDefault();
+
+                $.ajax({
+                        url: "/api/newRental",
+                        method: "post",
+                        data: vm
+                    })
+                    .done(function() {
+                        console.log("done");
+                    })
+                    .fail(function() {
+                        console.log("fail");
+                    });
+            });
+
+        });
+    </script>
+    
+
+
+}

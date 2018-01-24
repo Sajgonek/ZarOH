@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using ZarOH.Dtos;
 using ZarOH.Models;
+using System.Data.Entity;
 
 namespace ZarOH.Controllers.API
 {
@@ -18,11 +19,20 @@ namespace ZarOH.Controllers.API
             _context = new ApplicationDbContext();
         }
         // GET api/customers
-        public IHttpActionResult GetRooms()
+        public IHttpActionResult GetRooms(string query = null)
         {
-            var oldRooms = _context.Rooms.ToList();
-            var rooms = AutoMapper.Mapper.Map<List<Room>, List<RoomDto>>(oldRooms);
-            return Ok(rooms);
+            var roomsQuery = _context.Rooms
+                .Include(r => r.RoomType);
+                //.Where(r => r.IsOccupied == false);
+
+            if (!String.IsNullOrWhiteSpace(query))
+                roomsQuery = roomsQuery.Where(r => r.RoomType.Name.Contains(query));
+
+            var roomDtos = roomsQuery
+                .ToList()
+                .Select(AutoMapper.Mapper.Map<Room, RoomDto>);
+
+            return Ok(roomDtos);
         }
 
         //GET api/customer

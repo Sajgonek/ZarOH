@@ -90,6 +90,7 @@ namespace ZarOH.Controllers
                 customerInDb.MembershipTypeId = customer.MembershipTypeId;
                 customerInDb.WasACustomerBefore = customer.WasACustomerBefore;
                 customerInDb.EmailAddress = customer.EmailAddress;
+                customerInDb.TelNr = customer.TelNr;
             }
             _context.SaveChanges();
 
